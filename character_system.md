@@ -104,4 +104,54 @@ func apply_dna(dna: Dictionary):
 1.  캐릭터를 **파츠(Parts)** 단위로 분리하여 리소스 제작
 2.  **Skeleton2D**로 뼈대 애니메이션 구축 (파츠 교체 가능)
 3.  **DNA** 데이터로 외형 정보 저장 및 관리
-4.  교배 시 **랜덤/유전 알고리즘**을 통해 DNA 생성 후 `Visualizer`로 적용
+4. 교배 시 **랜덤/유전 알고리즘**을 통해 DNA 생성 후 `Visualizer`로 적용
+
+---
+
+## 6. 참고: 용어 및 레퍼런스 (Terminology)
+
+"Paper Doll" 방식은 Godot 커뮤니티나 게임 개발에서 **다른 용어**로 불리는 경우가 많습니다. 자료를 찾으실 때 아래 키워드를 사용하세요.
+
+### 6.1 주요 검색 키워드
+*   **Cutout Animation (컷아웃 애니메이션)**: 종이를 오려 붙인 듯한 애니메이션 방식. 이 프로젝트의 핵심 기술입니다.
+*   **2D Skeletal Animation (2D 스켈레탈 애니메이션)**: 뼈대(Skeleton)를 심어서 움직이는 방식입니다.
+*   **Rigging (리깅)**: 뼈대를 이미지에 심는 과정입니다.
+*   **Sprite Swap / Texture Swap**: 애니메이션 도중이나 스크립트로 이미지를 교체하는 기술입니다.
+
+### 6.2 Godot 관련 노드 및 기능
+이 기능을 구현하기 위해 사용해야 하는 Godot의 실제 노드 이름들입니다.
+*   `Skeleton2D`: 뼈대의 루트 노드
+*   `Bone2D`: 실제 뼈 하나하나
+*   `RemoteTransform2D`: 뼈의 움직임을 스프라이트에 전달하는 노드 (스프라이트가 뼈 자식이 아닐 때 유용)
+*   `Polgyon2D`: 단순 사각 이미지가 아니라, 관절이 굽혀지는 부드러운 이미지를 만들 때 사용 (필수는 아님)
+
+### 6.3 참고할 만한 유명 게임
+이 방식을 사용하는 대표적인 게임들입니다.
+*   **Don't Starve (돈 스타브)**: 2D 등신대 캐릭터가 시점에 따라 텍스처만 바뀝니다. 전형적인 Paper-doll 방식입니다.
+*   **RimWorld (림월드)**: 단순하지만 모듈형으로 몸체, 머리, 머리카락이 조합됩니다.
+*   **Cult of the Lamb**: 2D 캐릭터가 3D 공간에서 움직이는 듯한 느낌을 줍니다. (빌보드 방식 혼합)
+
+---
+
+## 7. 추천 YouTube 튜토리얼 (Video References)
+
+Paper-doll 시스템과 Godot Skeleton2D는 시각적인 작업이 많아 텍스트보다 동영상을 참고하는 것이 훨씬 효율적입니다. 다음은 가장 품질이 좋고 따라하기 쉬운 추천 채널과 검색 키워드입니다.
+
+### 7.1 강추 튜토리얼 시리즈
+*   **"Let's Make a 2D Character Creator in Godot 4 & GDScript" (채널: Coding Quests)**
+    *   **내용**: 이 프로젝트와 정확히 일치하는 내용입니다. UI 버튼을 눌러 모자, 옷, 얼굴을 실시간으로 바꾸는 **Paper-doll 시스템의 정석**을 보여줍니다.
+    *   **핵심**: `Sprite2D` 교체, 색상 변경(Modulate), UI 연동을 모두 다룹니다.
+    *   **검색어**: `Coding Quests Godot Character Creator`
+
+*   **"2D Rigging and Mesh in Godot 4.2" (채널: Strudel Studio)**
+    *   **내용**: 파츠를 단순히 붙이는 것을 넘어, 관절을 꺾었을 때 그림이 찌그러지지 않고 부드럽게 이어지게 하는 **Polygon2D + Skeleton2D** 기술을 다룹니다.
+    *   **핵심**: 다리나 팔이 굽혀질 때 자연스러운 애니메이션을 원한다면 필시청.
+    *   **검색어**: `Strudel Studio Godot Rigging`
+
+### 7.2 핵심 검색 키워드
+유튜브 검색창에 다음 키워드로 검색하시면 관련 영상을 쉽게 찾으실 수 있습니다.
+*   `Godot 4 2D Character Customization` (가장 추천)
+*   `Godot 4 Paper Doll System`
+*   `Godot 4 Skeleton2D IK Tutorial`
+*   `Godot 4 Bone2D Animation`
+
